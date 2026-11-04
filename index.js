@@ -7,6 +7,7 @@ import path from 'node:path'
 import { StringDecoder } from 'node:string_decoder'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { promisify } from 'node:util'
+import Lsp from '@deepseek-ai/dsh-lsp'
 import {
   apply as applyStdio,
   Config as StdioConfig,
@@ -398,10 +399,11 @@ export function apply(ctx) {
   const token = randomBytes(24).toString('hex')
   const quickCache = new Map()
 
-  // Single-package install: mount the generic stdio provider here. Its
-  // language-server dependencies live in this package's node_modules, so
-  // there is no sibling LSP package for users to install separately.
+  // Single-package install: mount the official LSP service inside this
+  // plugin instead of naming a protected @deepseek-ai package in the bundle
+  // patch. Only the package's own 'dsh-ide' row is declared in the patch.
   try {
+    ctx.plugin(Lsp)
     const require = createRequire(import.meta.url)
     const pyrightDir = process.env.DSH_PYRIGHT_DIR
       || path.dirname(require.resolve('pyright/package.json'))

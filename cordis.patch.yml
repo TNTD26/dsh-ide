@@ -1,5 +1,3 @@
 - insert:
-    - id: dsh-ide-lsp-service
-      name: '@deepseek-ai/dsh-lsp'
     - id: dsh-ide
       name: 'dsh-ide'
