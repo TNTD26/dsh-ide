@@ -67,7 +67,7 @@ python
 ```
 
 Add screenshots under `docs/screenshots/` and create `screenshots.json`.
-See [SCREENSHOTS.md](SCREENSHOTS.md).
+See [SCREENSHOTS.md](SCREENSHOTS.md) or [中文截图清单](截图清单.md).
 
 ## 5. Marketplaces
 

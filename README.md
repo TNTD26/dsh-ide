@@ -80,12 +80,13 @@ cordis.patch.yml           # DSH bundle patch
 dsh-ide-editor/            # CodeMirror 构建工程和测试
 install.cmd / install.ps1  # 安装根包依赖
 GITHUB.md                  # 上传/发版步骤
-SCREENSHOTS.md             # 截图清单
+SCREENSHOTS.md             # 截图清单（英文）
+截图清单.md                # 截图清单（中文，含拍摄步骤）
 ```
 
 ## 截图
 
-截图放在 `docs/screenshots/`，清单和拍摄方法见 [SCREENSHOTS.md](SCREENSHOTS.md)。
+截图放在 `docs/screenshots/`，清单和拍摄方法见 [中文截图清单](截图清单.md) 或 [SCREENSHOTS.md](SCREENSHOTS.md)。
 
 ## 已知限制
 
