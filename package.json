@@ -1,0 +1,12 @@
+{
+  "name": "dsh-ide",
+  "version": "1.0.0",
+  "private": true,
+  "description": "IDE plugin for DeepSeek Harness",
+  "scripts": {
+    "setup:lsp": "npm --prefix dsh-ide-lsp install --ignore-scripts",
+    "setup:editor": "npm --prefix dsh-ide-editor install --ignore-scripts",
+    "build:editor": "npm --prefix dsh-ide-editor run build",
+    "test:editor": "npm --prefix dsh-ide-editor test"
+  }
+}

@@ -1,0 +1,25 @@
+# dependencies
+node_modules/
+.pnpm-store/
+
+# local caches
+.npm-cache/
+*.log
+npm-debug.log*
+
+# build output
+dist/
+*.tgz
+
+# secrets and machine config
+.env
+.env.*
+!.env.example
+.credentials*
+*.pem
+
+# editor / OS noise
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
