@@ -8,7 +8,7 @@ const dom = new JSDOM('<!doctype html><html><body><div id="host"></div></body></
   runScripts: 'outside-only',
 })
 const context = dom.getInternalVMContext()
-vm.runInContext(fs.readFileSync('../dsh-ide-plugin/assets/codemirror.js', 'utf8'), context)
+vm.runInContext(fs.readFileSync('../assets/codemirror.js', 'utf8'), context)
 const CM = dom.window.DSHCodeMirror
 if (!CM) throw new Error('DSHCodeMirror was not exposed by the bundle')
 

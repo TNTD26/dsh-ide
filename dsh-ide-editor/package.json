@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "esbuild entry.js --bundle --format=iife --global-name=DSHCodeMirror --minify --outfile=../dsh-ide-plugin/assets/codemirror.js",
+    "build": "esbuild entry.js --bundle --format=iife --global-name=DSHCodeMirror --minify --outfile=../assets/codemirror.js",
     "test": "node test-codemirror.cjs"
   },
   "dependencies": {

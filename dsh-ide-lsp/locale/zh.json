@@ -1,6 +1,0 @@
-{
-  "meta": {
-    "title": "DSH IDE 语言服务",
-    "description": "为内置 DSH IDE 提供 Python / TypeScript 语言服务（悬停、定义、引用）。"
-  }
-}

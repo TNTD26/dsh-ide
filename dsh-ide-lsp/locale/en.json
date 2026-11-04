@@ -1,6 +1,0 @@
-{
-  "meta": {
-    "title": "DSH IDE Language Services",
-    "description": "Python and TypeScript language servers (hover, definitions and references) for the built-in DSH IDE."
-  }
-}

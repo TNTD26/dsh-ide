@@ -1,5 +1,5 @@
 - insert:
     - id: dsh-ide-lsp-service
       name: '@deepseek-ai/dsh-lsp'
-    - id: dsh-ide-lsp-stdio
-      name: '@local/dsh-ide-lsp'
+    - id: dsh-ide
+      name: 'dsh-ide'

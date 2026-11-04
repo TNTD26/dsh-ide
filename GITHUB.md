@@ -1,90 +1,64 @@
-# Upload this repository to GitHub
-#
-# These commands are for the maintainer, not end users.
-# Run them from the folder containing README.md, dsh-ide-plugin/, dsh-ide-lsp/
-# and dsh-ide-editor/.
+# Publish this repository to GitHub
 
-## 1. Install Git
+This is the maintainer guide. The repository already exists at
+https://github.com/TNTD26/dsh-ide.
 
-Check:
+## 1. What changed
 
-```powershell
-git --version
+This is now a **single-package plugin**:
+
+```text
+package.json          # dsh.bundle + dsh.client + LSP dependencies
+index.js              # Host: IDE + LSP composition
+client.js             # Web client
+assets/codemirror.js  # bundled editor
+cordis.patch.yml      # one bundle patch
+dsh-ide-editor/       # CodeMirror build source (optional for users)
 ```
 
-If it is missing, install Git for Windows:
+The old `dsh-ide-plugin/` and `dsh-ide-lsp/` folders are no longer needed.
+Users install one folder only.
 
-https://git-scm.com/download/win
-
-## 2. Create an empty GitHub repository
-
-1. Sign in to https://github.com
-2. Click **New repository**
-3. Name it, for example `dsh-ide`
-4. Choose **Public**
-5. Do **not** initialize with README, .gitignore, or license
-6. Click **Create repository**
-
-## 3. Initialize and push
-
-From this folder:
+## 2. Clone the existing repository
 
 ```powershell
-git init
-git add .
+cd C:\Users\王博彦\Documents\deepseek-harness\default-workspace
+git clone https://github.com/TNTD26/dsh-ide.git dsh-ide-github
+```
+
+## 3. Replace its contents with this folder
+
+Copy everything from this folder into `dsh-ide-github`, **except** `.git`,
+`node_modules`, `.npm-cache`, `dist`.
+
+Then delete the old folders from the clone:
+
+```powershell
+cd dsh-ide-github
+Remove-Item -Recurse -Force dsh-ide-plugin, dsh-ide-lsp
+```
+
+## 4. Commit and push
+
+```powershell
 git status
 ```
 
-If the folder already contains a `.git` directory (this packaged folder was
-initialized for you), skip `git init` and continue with `git add .`.
-
-Check that `node_modules/`, `.npm-cache/`, `.env`, `*.pem` are not listed.
-
-Before the first commit, tell Git who you are (use your own name/email):
+Check that no `node_modules/`, `.npm-cache/`, `.env`, or `*.pem` files are
+listed. Then:
 
 ```powershell
-git config --global user.name "Your Name"
-git config --global user.email "you@example.com"
+git config user.name "TNTD26"
+git config user.email "wby070427@gmail.com"
+git add -A
+git commit -m "feat: ship DSH IDE as a single installable package"
+git push origin main
 ```
 
-Then:
+If Git asks for credentials, use Git Credential Manager's browser login or a
+Personal Access Token. Never commit a token.
 
-```powershell
-git commit -m "Initial release: DSH IDE"
-git branch -M main
-git remote add origin https://github.com/<your-name>/dsh-ide.git
-git push -u origin main
-```
-
-Replace `<your-name>` with your GitHub username.
-
-If `git remote add` says the remote already exists:
-
-```powershell
-git remote set-url origin https://github.com/<your-name>/dsh-ide.git
-```
-
-When Git asks for credentials:
-
-- Prefer the browser login opened by Git Credential Manager.
-- If you use a Personal Access Token, paste it as the password.
-- Never commit a token or API key.
-
-### Easier alternative: GitHub Desktop
-
-If the terminal feels risky:
-
-1. Install GitHub Desktop and sign in.
-2. **File → Add local repository**.
-3. Choose this folder.
-4. Write a commit message and click **Commit to main**.
-5. Click **Publish repository**.
-6. Uncheck **Keep this code private** if you want a public repo.
-
-The result is the same as the command-line steps.
-
-
-## 4. Publish a release
+## 5. Publish the release
 
 ```powershell
 git tag v1.0.0
@@ -93,20 +67,39 @@ git push origin v1.0.0
 
 On GitHub:
 
-1. Open **Releases**
-2. Click **Draft a new release**
-3. Choose tag `v1.0.0`
-4. Title: `v1.0.0`
-5. Attach the generated `dist/dsh-ide-1.0.0.zip`
-6. Publish release
+1. Open **Releases → Draft a new release**
+2. Tag: `v1.0.0`
+3. Title: `v1.0.0`
+4. Attach `dist/dsh-ide-1.0.0.zip`
+5. Paste [RELEASE_NOTES.md](RELEASE_NOTES.md)
+6. Publish
 
-The ZIP is what normal users download and extract; they then run
-`install.cmd` (or `install.ps1` with ExecutionPolicy Bypass) and install the
-two plugin folders through DSH.
+## 6. Marketplaces
 
-## 5. Optional: npm packages
+Before submitting:
 
-This repository uses local package names (`@local/...`) and is intended for
-GitHub/local installation. Publishing to npm requires renaming the packages to
-a scope you own and publishing `dsh-ide-plugin` and `dsh-ide-lsp` separately.
-Do that only after you are comfortable with npm publishing.
+- Add the `dsh-plugin` topic in **About**.
+- Add a short repository description.
+- Upload 1–4 screenshots and create `screenshots.json` (see
+  [SCREENSHOTS.md](SCREENSHOTS.md)).
+- Wait until the repository is at least **1 day old** for awesome-dsh-plugin.
+- Make sure the GitHub Release exists; marketplaces prefer a pinned artifact.
+
+Then:
+
+- [DSH-Store submission](https://github.com/AI-Scarlett/DSH-Store/issues/new?template=plugin-submission.yml)
+- [awesome-dsh-plugin contributing](https://github.com/awesome-dsh-plugin/awesome-dsh-plugin/blob/main/contributing.md)
+
+For a monorepo the marketplace may ask for a plugin path; this package is at
+the repository root, so no path is needed.
+
+## 7. Optional: npm
+
+The package name is `dsh-ide`. Publishing to npm is optional. If you do:
+
+```powershell
+npm publish --access public
+```
+
+The `repository` field already points to this GitHub repo. Never publish an
+API key or a `.env` file.

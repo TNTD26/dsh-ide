@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install root dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Install editor build dependencies
+        run: npm --prefix dsh-ide-editor ci --ignore-scripts
+
+      - name: Syntax check
+        run: |
+          node --check index.js
+          node --check client.js
+          node --check dsh-ide-editor/entry.js
+
+      - name: Check bundled editor asset
+        run: test -s assets/codemirror.js && echo "CodeMirror asset present"
+
+      - name: CodeMirror integration test
+        run: npm --prefix dsh-ide-editor test
+
+      - name: Build editor bundle
+        run: npm --prefix dsh-ide-editor run build

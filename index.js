@@ -2,10 +2,17 @@ import { randomBytes } from 'node:crypto'
 import { execFile, spawn } from 'node:child_process'
 import { promises as nodeFs } from 'node:fs'
 import { existsSync } from 'node:fs'
+import { createRequire } from 'node:module'
 import path from 'node:path'
 import { StringDecoder } from 'node:string_decoder'
 import { fileURLToPath, pathToFileURL } from 'node:url'
 import { promisify } from 'node:util'
+import {
+  apply as applyStdio,
+  Config as StdioConfig,
+  inject as stdioInject,
+  name as stdioName,
+} from '@deepseek-ai/dsh-lsp-stdio'
 
 /** Host half of the DSH IDE: workspace files, search/replace and a streaming AI assistant. */
 export const inject = ['webServer', 'fs', 'workingDirectory']
@@ -34,6 +41,7 @@ const execFileAsync = promisify(execFile)
 const HOST_PLUGIN_DIR = path.dirname(fileURLToPath(import.meta.url))
 const LSP_MODULE_CANDIDATES = [
   process.env.DSH_IDE_LSP_MODULES || '',
+  path.resolve(HOST_PLUGIN_DIR, 'node_modules'),
   path.resolve(HOST_PLUGIN_DIR, '..', 'dsh-ide-lsp', 'node_modules'),
   path.resolve(process.cwd(), 'dsh-ide-lsp', 'node_modules'),
 ].filter(Boolean)
@@ -389,6 +397,47 @@ class HttpError extends Error {
 export function apply(ctx) {
   const token = randomBytes(24).toString('hex')
   const quickCache = new Map()
+
+  // Single-package install: mount the generic stdio provider here. Its
+  // language-server dependencies live in this package's node_modules, so
+  // there is no sibling LSP package for users to install separately.
+  try {
+    const require = createRequire(import.meta.url)
+    const pyrightDir = process.env.DSH_PYRIGHT_DIR
+      || path.dirname(require.resolve('pyright/package.json'))
+    const typescriptDir = process.env.DSH_TYPESCRIPT_LSP_DIR
+      || path.dirname(require.resolve('typescript-language-server/package.json'))
+    const nodeBin = process.env.DSH_NODE_BIN || 'node'
+    ctx.plugin({
+      name: stdioName,
+      inject: stdioInject,
+      Config: StdioConfig,
+      apply: applyStdio,
+    }, {
+      servers: {
+        python: {
+          command: nodeBin,
+          args: [path.join(pyrightDir, 'langserver.index.js'), '--stdio'],
+          extensionToLanguage: {
+            '.py': 'python',
+            '.pyi': 'python',
+          },
+        },
+        typescript: {
+          command: nodeBin,
+          args: [path.join(typescriptDir, 'lib', 'cli.mjs'), '--stdio'],
+          extensionToLanguage: {
+            '.ts': 'typescript',
+            '.tsx': 'typescriptreact',
+            '.js': 'javascript',
+            '.jsx': 'javascriptreact',
+          },
+        },
+      },
+    })
+  } catch (error) {
+    ctx.logger?.warn?.(`dsh-ide: LSP provider unavailable: ${error instanceof Error ? error.message : String(error)}`)
+  }
 
   const disposeRoute = ctx.webServer.register({
     kind: 'prefix',

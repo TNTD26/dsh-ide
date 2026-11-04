@@ -1,12 +1,69 @@
 {
   "name": "dsh-ide",
   "version": "1.0.0",
-  "private": true,
-  "description": "IDE plugin for DeepSeek Harness",
+  "description": "A full IDE inside DeepSeek Harness — file tree, tabs, AI chat, Git, terminal, Python/TypeScript LSP and CodeMirror 6.",
+  "type": "module",
+  "author": {
+    "name": "TNTD26"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TNTD26/dsh-ide.git"
+  },
+  "homepage": "https://github.com/TNTD26/dsh-ide#readme",
+  "bugs": {
+    "url": "https://github.com/TNTD26/dsh-ide/issues"
+  },
+  "keywords": [
+    "deepseek-harness",
+    "dsh-plugin",
+    "ide",
+    "code-editor",
+    "codemirror",
+    "lsp"
+  ],
+  "license": "MIT",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "assets/codemirror.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "README.en.md",
+    "RELEASE_NOTES.md",
+    "SCREENSHOTS.md",
+    "LICENSE",
+    "THIRD_PARTY_NOTICES.md"
+  ],
+  "dependencies": {
+    "@deepseek-ai/dsh-lsp": "0.2.1-rc.5",
+    "@deepseek-ai/dsh-lsp-stdio": "0.2.1-rc.5",
+    "pyright": "1.1.414",
+    "typescript": "^5.0.0",
+    "typescript-language-server": "6.0.3"
+  },
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
-    "setup:lsp": "npm --prefix dsh-ide-lsp install --ignore-scripts",
-    "setup:editor": "npm --prefix dsh-ide-editor install --ignore-scripts",
-    "build:editor": "npm --prefix dsh-ide-editor run build",
-    "test:editor": "npm --prefix dsh-ide-editor test"
+    "test:editor": "npm --prefix dsh-ide-editor test",
+    "build:editor": "npm --prefix dsh-ide-editor run build"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true
+    }
   }
 }
