@@ -1,19 +1,26 @@
 # Screenshot checklist
 
-Screenshots are the single biggest factor in whether people try a plugin.
-Add 4–6 images under `docs/screenshots/`, then list them in `screenshots.json`
-for DSH marketplaces.
+The repository currently ships **2 screenshots**:
 
-## Required shots
+- `docs/screenshots/01-overview.png`
+- `docs/screenshots/02-ai.png`
+
+That satisfies the marketplace requirement of 1–8 images. Add more if useful.
+
+## Current shots
 
 | File | What to show |
 | --- | --- |
 | `01-overview.png` | Whole IDE: file tree, editor, AI panel, terminal, status bar |
-| `02-lsp.png` | Hover or go-to-definition plus Problems panel |
-| `03-ai.png` | Model picker + API key dialog + diff preview |
+| `02-ai.png` | AI conversation, model picker, code blocks and diff |
+
+## Optional additions
+
+| File | What to show |
+| --- | --- |
+| `03-lsp.png` | Hover or go-to-definition plus Problems panel |
 | `04-terminal-git.png` | Terminal tabs with ANSI colors and Git panel |
 | `05-codemirror.png` | `CM 6` enabled with folding gutter and multiple cursors |
-| `06-mobile.png` | Optional: narrow layout, if it works well |
 
 ## Rules
 
@@ -33,15 +40,14 @@ for DSH marketplaces.
 
 ## screenshots.json
 
-After the images exist, create this at the repository root:
+Already created at the repository root:
 
 ```json
 [
   "docs/screenshots/01-overview.png",
-  "docs/screenshots/02-lsp.png",
-  "docs/screenshots/03-ai.png",
-  "docs/screenshots/04-terminal-git.png"
+  "docs/screenshots/02-ai.png"
 ]
 ```
 
-The marketplace requires 1–8 relative paths, no leading `/`, no `..`.
+Append optional paths when you add more images. The marketplace requires 1–8
+relative paths, no leading `/`, no `..`.

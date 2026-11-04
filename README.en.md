@@ -50,6 +50,12 @@ dsh plugin --profile <profile> add github:TNTD26/dsh-ide
 - **Git**: branch icon on the left.
 - **LSP**: use Definition / References / Hover in the breadcrumb, or `Ctrl+Click`.
 
+## Screenshots
+
+![DSH IDE overview](docs/screenshots/01-overview.png)
+
+![AI assistant](docs/screenshots/02-ai.png)
+
 ## Development
 
 ```powershell

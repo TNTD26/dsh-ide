@@ -41,6 +41,8 @@
     "RELEASE_NOTES.md",
     "SCREENSHOTS.md",
     "截图清单.md",
+    "screenshots.json",
+    "docs/screenshots/*.png",
     "LICENSE",
     "THIRD_PARTY_NOTICES.md"
   ],

@@ -86,6 +86,10 @@ SCREENSHOTS.md             # 截图清单（英文）
 
 ## 截图
 
+![DSH IDE 总览](docs/screenshots/01-overview.png)
+
+![AI 助手](docs/screenshots/02-ai.png)
+
 截图放在 `docs/screenshots/`，清单和拍摄方法见 [中文截图清单](截图清单.md) 或 [SCREENSHOTS.md](SCREENSHOTS.md)。
 
 ## 已知限制
