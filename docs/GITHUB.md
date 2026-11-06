@@ -3,8 +3,8 @@
 The repository is already public at
 https://github.com/TNTD26/dsh-ide.
 
-This folder now contains a **ready commit** for the single-package version.
-The commit is local; it has not been pushed.
+This document describes the release steps for the single-package layout. The
+repository is already public and the current release is `v1.0.0`.
 
 ## 1. Push the commit
 
