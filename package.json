@@ -37,16 +37,15 @@
     "locale/*.json",
     "icon.svg",
     "README.md",
-    "README.en.md",
-    "RELEASE_NOTES.md",
-    "SCREENSHOTS.md",
-    "截图清单.md",
-    "CONTRIBUTING.md",
-    "SECURITY.md",
+    "docs/RELEASE_NOTES.md",
+    "docs/SCREENSHOTS.md",
+    "docs/截图清单.md",
+    ".github/CONTRIBUTING.md",
+    ".github/SECURITY.md",
     "screenshots.json",
     "docs/screenshots/*.png",
     "LICENSE",
-    "THIRD_PARTY_NOTICES.md"
+    "docs/THIRD_PARTY_NOTICES.md"
   ],
   "dependencies": {
     "@deepseek-ai/dsh-lsp": "0.2.1-rc.5",
