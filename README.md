@@ -17,7 +17,7 @@
 
 ![DSH IDE 演示](docs/promo/dsh-ide-demo.gif)
 
-[下载 25 秒 1080p 宣传片](https://github.com/TNTD26/dsh-ide/releases/download/v1.0.0/dsh-ide-promo.mp4) · [总览静帧](docs/promo/dsh-ide-still-overview.png) · [AI 静帧](docs/promo/dsh-ide-still-ai.png)
+[下载 25 秒 1080p 宣传片](https://github.com/TNTD26/dsh-ide/releases/download/v1.0.0/dsh-ide-promo.mp4)
 
 ### 功能
 
@@ -131,7 +131,7 @@ A full IDE inside the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek
 
 ![DSH IDE demo](docs/promo/dsh-ide-demo.gif)
 
-[Download the 25-second 1080p promo](https://github.com/TNTD26/dsh-ide/releases/download/v1.0.0/dsh-ide-promo.mp4) · [Overview still](docs/promo/dsh-ide-still-overview.png) · [AI still](docs/promo/dsh-ide-still-ai.png)
+[Download the 25-second 1080p promo](https://github.com/TNTD26/dsh-ide/releases/download/v1.0.0/dsh-ide-promo.mp4)
 
 ### Features
 
