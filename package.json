@@ -41,6 +41,8 @@
     "RELEASE_NOTES.md",
     "SCREENSHOTS.md",
     "截图清单.md",
+    "CONTRIBUTING.md",
+    "SECURITY.md",
     "screenshots.json",
     "docs/screenshots/*.png",
     "LICENSE",

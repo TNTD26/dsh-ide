@@ -99,6 +99,10 @@ SCREENSHOTS.md             # 截图清单（英文）
 - 完整 TUI（vim/htop）暂不支持，终端是 ANSI 彩色行输入模式。
 - AI 多文件补丁使用整文件替换，不是 diff hunk 合并。
 
+## 参与贡献
+
+见 [CONTRIBUTING.md](CONTRIBUTING.md)。安全问题见 [SECURITY.md](SECURITY.md)。
+
 ## License
 
 MIT。见 [LICENSE](LICENSE)。第三方组件许可见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。

@@ -72,6 +72,11 @@ npm --prefix dsh-ide-editor test
 - Full-screen TUI apps (vim/htop) are not supported yet.
 - Multi-file AI patches replace whole files, not individual diff hunks.
 
+## Contributing
+
+See [CONTRIBUTING.md](CONTRIBUTING.md). For security issues, see
+[SECURITY.md](SECURITY.md).
+
 ## License
 
 MIT. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
