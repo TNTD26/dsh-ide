@@ -7,6 +7,12 @@
 
 一个内置在 [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web 界面里的完整 IDE 插件。
 
+## 演示
+
+![DSH IDE 演示](docs/promo/dsh-ide-demo.gif)
+
+[下载 25 秒 1080p 宣传片](https://github.com/TNTD26/dsh-ide/releases/download/v1.0.0/dsh-ide-promo.mp4) · [封面](docs/promo/dsh-ide-cover.png) · [总览静帧](docs/promo/dsh-ide-still-overview.png) · [AI 静帧](docs/promo/dsh-ide-still-ai.png)
+
 ## 功能
 
 - 侧边栏独立 IDE 入口

@@ -7,6 +7,12 @@
 
 A full IDE inside the [DeepSeek Harness](https://github.com/deepseek-ai/deepseek-harness) Web UI.
 
+## Demo
+
+![DSH IDE demo](docs/promo/dsh-ide-demo.gif)
+
+[Download the 25-second 1080p promo](https://github.com/TNTD26/dsh-ide/releases/download/v1.0.0/dsh-ide-promo.mp4) · [Cover](docs/promo/dsh-ide-cover.png) · [Overview still](docs/promo/dsh-ide-still-overview.png) · [AI still](docs/promo/dsh-ide-still-ai.png)
+
 ## Features
 
 - Dedicated sidebar entry
