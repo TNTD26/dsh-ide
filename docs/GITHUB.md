@@ -11,7 +11,7 @@ repository is already public and the current release is `v1.0.0`.
 Open PowerShell in this folder:
 
 ```powershell
-cd "C:\Users\王博彦\Documents\deepseek-harness\default-workspace\dsh-ide-release"
+cd "C:\path\to\dsh-ide-release"
 git status
 git push -u origin main
 ```
